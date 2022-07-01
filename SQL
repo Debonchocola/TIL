@@ -2,3 +2,5 @@ ORDER BY -- 순서대로 DESC: 역 순 WHERE--조건문
 GROUP BY -- 그룹으로 묶기 HAVING-- 그룹으로 묶었을 때 조건문
 COUNT -- 숫자 
 DISTINCT --중복 제거
+오늘은 프로그래머스 SQL의 SELECT문제를 풀어봤다.
+주로 사용하는 것들을 적었다.
