@@ -1,0 +1,4 @@
+ORDER BY -- 순서대로 DESC: 역 순 WHERE--조건문
+GROUP BY -- 그룹으로 묶기 HAVING-- 그룹으로 묶었을 때 조건문
+COUNT -- 숫자 
+DISTINCT --중복 제거
