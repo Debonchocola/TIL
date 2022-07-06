@@ -1,0 +1,28 @@
+컬렉션: 다수의 데이터를 쉽고 효과적으로 처리할 수 있는 표준화된 방법을 제공하는 클래스 집합
+Collection -->       List      --> LinkedList
+          (순서가 있는 저장 공간)--> Stack 스택자료구조
+                               --> Vector 동기화보장
+                               --> ArrayList 동기화보장하지 않음
+          
+           -->        Set      --> HashSet 대표 클래스
+                               --> SortedSet (정렬을 위한 Set클래스) ---> TreeSet
+                               
+Map ---> Hashtable 동기화 보장
+    ---> HashMap 동기화 보장 x
+    ---> SortedMap 정렬을 위한 클래스 ---> TreeMap
+    
+컬렉션 사용 이유
+1. 일괄된 API: Collection에서 상속받아 통일된 메서드를 사용
+2. 추상화 구현: 추상화 구현으로 코드를 줄일 수 있다.
+3. 프로그램 속도 및 품질 향상
+Vector, ArrayList는 표준 배열보다 느리지만 많은 움직임이 필요한 프로그램에서 유용함
+차이점은 Vector는 동기화가 되고, ArrayList는 동기화가 안된다.
+
+Set 중복을 방지하고 고유한 데이터만 저장해야하는 경우에 사용
+
+ HashSet은 동일한 순서로 삽입되는 것을 보장하지 않고, Null요소 삽입을 허용함
+ LinkedHashSet은 HashSet과 유사하지만 차이점은 데이터를 저장하는 순서를 유지함
+ TreeSet 데이터는 오름차순으로 유지
+ 
+ Map: 키와 값의 한쌍으로 이루어진 데이터의 집합으로 순서가 없음, 
+      키는 중복이 불가지만 값은 중복될 수 있다.
