@@ -1,0 +1,50 @@
+지네릭스(Generics)란?
+-컴파일시 타입을 체크해 주는 기능(안전성)
+-객체의 타입 안정성을 높이고 형변환의 번거로움을 줄여줌
+
+List <String> stringList = new ArrayList <> ();
+stringList.add("generics");
+string result = stringList.get(0);
+
+------------------------------------------------
+지네릭스 타입 제한
+class MilkCategory<T extends Milk> {
+  private T t;                                     MilkCategory<Milk> milkcategory = new MilkCategory<> ();
+  
+  public void set(T t) {
+    this.t = t;                                    MilkCategory<choco> chocoMilkcategory = new MilkCategory<> ();  //OK!
+  }
+  
+  public T get() {
+    return t;                                      MilkCategory<Tea> teaMilkcategory = new MilkCategory<> (); //컴파일 에러!
+  }
+}
+
+Wildcards
+
+1) <?> Unbounded Wildcards
+모든 타입 가능
+
+2) <?extends Milk> Upper Bounded Wildcards 상한경계
+Milk와 Milk의 하위타입 ex)choco
+
+3) <?super Milk> Lower Bounded Wildcards 하한경계
+Milk와 Milk의 상위타입 
+
+
+언제사용할까?
+PECS
+producer -extends, consumer -super 사용
+------------------------------------------------
+지네릭스의 장점
+1.타입 안정성을 제공한다.
+2.타입 체크와 형변환을 생략할 수 있으므로 코드가 간결해진다.
+
+------------------------------------------------
+Exception 예외의 상속계층도
+
+RuntimeException
+-ArithmeticException(산술)
+-ClassCasrException(형변환에러)
+-NullPointerException(참조변수Null)
+-IndexOutOfBoundsException(배열범위 벗어남)
