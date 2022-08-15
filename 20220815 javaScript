@@ -1,0 +1,114 @@
+//1.Shorthand property names
+{
+  const ellie1 = {
+    name: "Ellie",
+    age: "18",
+  };
+
+  const name = "Ellie"; //key와 value로 이루어짐
+  const age = "18";
+
+  const ellie2 = {
+    name: name, //Ellie
+    age: age, //18
+  };
+
+  const ellie3 = {
+    //키와 밸류가 동일할 때는 이렇게 하나로 가능
+    name,
+    age,
+  };
+}
+
+//2.Destructuring assignment
+
+{
+  //object
+  const student = {
+    name: "Anna",
+    level: 1,
+  };
+
+  {
+    const name = student.name;
+    const level = student.level;
+    console.log(name, level);
+  }
+  //Destructuring assignment를 활용하면
+  {
+    const { name, level } = student; //key 와 value 값을 이렇게 정의해주면
+    console.log(name, level); // Anna,1이 출력
+
+    //다른 키와 벨류를 정의하고 싶으면
+    const { name: BB, level: level2 } = student;
+    console.log(BB, level2);
+  }
+
+  //배열에서의 활용
+  const animals = ["🐶", "🐱"];
+
+  {
+    const first = animals[0];
+    const second = animals[1];
+    console.log(first, second);
+  }
+  //각각 안해주고 배열로 받아서 이렇게 가능
+  {
+    const [first, second] = animals;
+    console.log(first, second);
+  }
+}
+
+//3.Spread Syntax
+{
+  const obj1 = { key: "key1" };
+  const obj2 = { key: "key2" };
+  const array = [obj1, obj2];
+
+  //array copy
+  const arrayCopy = [...array]; //...배열 복사
+  console.log(array, arrayCopy);
+
+  //새롭게 추가
+  const arrayCopy2 = [...array, { key: "key3" }];
+  obj.key = "newKey"; //참조값을 복사하기 때문에 이렇게 하면 전부 바뀐다. 주의
+  console.log(array, arrayCopy, arrayCopy2); //arrayCopy2에만 key3
+
+  //오브젝트는 실제의 값을 담고 있는 것이 아니라 주소의 값만 가지고 있다.
+  //obj copy
+  const obj3 = { ...obj1 };
+  console.log(obj3);
+
+  //배열 더하기
+  const fruits1 = ["🍎", "🍐"];
+  const fruits2 = ["🍊", "🍋"];
+  const fruits = [...fruits1, ...fruits2];
+
+  //오브젝트 더하기
+  const dog1 = { dog1: "🐩" };
+  const dog2 = { dog2: "🐶" };
+  const dog = { ...dog1, ...dog2 }; //만약 {dog: '🐩' }, {dog: '🐶' }이렇게 동일하게 작성한 경우 뒤에가 앞을 덮어씌운다. 🐶출력
+}
+
+//4.Default parameters
+{
+  function printMessage(message) {
+    if (message == null) {
+      message = "default message";
+    }
+    console.log(message);
+  }
+
+  printMessage("hello");
+  printMessage();
+
+  //Default parameters 활용
+  {
+    function printMessage(message = "default message") { //인자에 초기값 설정함
+      console.log(message);
+    }
+
+    printMessage("hello");
+    printMessage();
+  }
+}
