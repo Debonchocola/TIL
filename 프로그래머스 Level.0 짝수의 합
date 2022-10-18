@@ -1,0 +1,18 @@
+짝수의 합
+
+정수 n이 주어질 때, n이하의 짝수를 모두 더한 값을 return 하도록 solution 함수를 작성해주세요.
+
+function solution(n) {
+    var answer = 0;
+
+    for(let i=2 ; i<=n ; i+=2)
+        answer += i;
+
+    return answer;
+}
+짝수의 합이기 때문에 시작을 2로 했고 2씩 증가하는 for문을 이용했다.
+
+다른 풀이를 보면
+const solution = (n) => new Array(n).fill(0).map((_,i) => i+1).reduce((a,b) => b%2 === 0 ? a+b : a,0)
+배열로 만들어 fill을 이용해 채워두고 삼항연산자를 이용해 짝수인 경우 더하는 조건을 줘서 해결한것을 볼 수 있었다.
+확실히 삼항연산자로 풀이하면 코드가 간략해지는것 같다.
