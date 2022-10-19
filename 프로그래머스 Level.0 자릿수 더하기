@@ -1,0 +1,11 @@
+자릿수 더하기
+
+정수 n이 매개변수로 주어질 때 n의 각 자리 숫자의 합을 return하도록 solution 함수를 완성해주세요
+
+function solution(n) {
+	return String(n).split('').reduce((acc, cur) => acc + cur * 1, 0);
+}
+
+먼저 스트링 값을 split을 통해 하나씩 분리하여 reduce를 이용하여 하나씩 더해준다. *1을 하는 이유는 string을 숫자로 바꾸기 위해서이다.
+
+split 기억하자
