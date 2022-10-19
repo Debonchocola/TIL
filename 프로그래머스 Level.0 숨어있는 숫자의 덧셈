@@ -1,0 +1,9 @@
+숨어있는 숫자의 덧셈
+
+문자열 my_string이 매개변수로 주어집니다. my_string안의 모든 자연수들의 합을 return하도록 solution 함수를 완성해주세요.
+
+const solution = my_string => [...my_string].filter(a => !Number.isNaN(+a)).reduce((a,b) => a+Number(b),0)
+
+filter로 !Number.isNaN(+a))숫자인 경우만 출력하고 
+reduce((a,b) => a+Number(b),0)를 이용해서 숫자를 더해줬다.
+isNaN은 string의 경우 이렇게 출력되서 !를 통해 숫자만 출력했다.
