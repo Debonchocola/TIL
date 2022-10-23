@@ -1,0 +1,35 @@
+팩토리얼
+
+i팩토리얼 (i!)은 1부터 i까지 정수의 곱을 의미합니다. 예를들어 5! = 5 * 4 * 3 * 2 * 1 = 120 입니다. 
+정수 n이 주어질 때 다음 조건을 만족하는 가장 큰 정수 i를 return 하도록 solution 함수를 완성해주세요.
+
+function solution(n) {
+    var answer = 0;
+    for(let i = 1 ; i <= 10; i++) {
+        if(n >= Facto(i)) {
+            answer = i
+            continue
+        } else {
+            break
+        }
+    }
+    return answer;
+}
+function Facto(num) {
+    if(num > 1) return num*Facto(num-1)
+    return num
+}
+
+1. 팩토리얼을 만들어야한다.
+2. n보다 작은 가장 큰 팩토리얼의 정수 i를 출력해야 한다.
+
+1번은 팩토리얼 함수를 하나 만들었다. 1이 될때까지 1씩 빼주면 곱해줬다.
+2번은 문제에서 n의 범위가 10팩토리얼 까지였기에 조건문에 그렇게 적어줬고
+가장 큰 수를 찾을 때까지 조건문이 작동하도록 continue를 적어줬다.
+
+function solution(n) {
+    let i = 1;
+    let f = 1;
+    while (f*i < n) f*=++i;
+    return i;
+}해당 코드 처럼 while문을 이용해서 더 쉽게 풀이할 수 있다.
