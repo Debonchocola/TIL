@@ -1,0 +1,11 @@
+A로 B만들기
+
+문자열 before와 after가 매개변수로 주어질 때, before의 순서를 바꾸어 after를 만들 수 있으면 1을, 만들 수 없으면 0을 return 하도록 solution 함수를 완성해보세요.
+
+function solution(before, after) {
+   return [...before].sort().join("") === [...after].sort().join("")? 1 : 0
+}
+
+문자열을 분리하고 정렬하여 같은 경우면 1 이고 그렇지 않다면 0인 풀이를 했다.
+순서를 바꾸어 만들 수 있다는것은 결국 같은 문자를 가지고 있어야 되고 정렬했을떄 같으면 되기 떄문에
+이러한 풀이를 썼다.
