@@ -10,3 +10,11 @@ function solution(array, n) {
 2.절대 값이 가장 작은 수의 값을 출력한다.
 min이라는 n과의 차가 가장 작은 수를 만들고
 array를 정렬해주고 차가 가장 작았던 i값을 찾아준다.
+
+function solution(array, n) {
+    array = array.map(v => v - n).sort((a, b) => a - b);
+    return n + array.sort((a, b) => Math.abs(a) - Math.abs(b))[0];
+}
+
+해당 코드는 먼저 array를 복사해서 n과의 가장 작은 차를 가진 수를 넣고
+n+해당 차이를 출력하여 조건에 해당하는 수를 출력했다.
