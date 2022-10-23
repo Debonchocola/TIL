@@ -1,0 +1,18 @@
+한 번만 등장한 문자
+
+문자열 s가 매개변수로 주어집니다. s에서 한 번만 등장하는 문자를 사전 순으로 정렬한 문자열을 return 하도록 solution 함수를 완성해보세요. 
+한 번만 등장하는 문자가 없을 경우 빈 문자열을 return 합니다.
+
+function solution(s) {
+    let answer ='';
+    s=[...s].sort();
+    for(let i=0;i<s.length;i++){
+        if(s[i]!==s[i-1] && s[i]!==s[i+1]){
+            answer +=s[i];
+        }
+    }
+    return answer;
+}
+
+s를 정렬하고 s에서 한 번만 등장하는 문자를 출력하기 위해서 
+s[i]가 s[i-1], s[i+1]과 일치하지 않는 경우 answer에 더해준다.
