@@ -1,0 +1,17 @@
+로그인 성공?
+
+아이디와 비밀번호가 모두 일치하는 회원정보가 있으면 "login"을 return합니다.
+로그인이 실패했을 때 아이디가 일치하는 회원이 없다면 “fail”를, 아이디는 일치하지만 비밀번호가 일치하는 회원이 없다면 “wrong pw”를 return 합니다.
+
+function solution(id_pw, db) {
+  let result = '';
+
+  db.map((a, i) => {if(id_pw[0] === a[0] && id_pw[1] === a[1]) result = "login"
+    else if(id_pw[0] === a[0] && id_pw[1] !== a[1]) result =  "wrong pw"
+    else if(id_pw[0] !== a[0] && id_pw[1] !== a[1]) result = "fail"})
+
+  return result
+}
+map으로 배열을 복사하고 id와 pw 가 일치하는가? 일치하면 login
+id만 일치한 경우 wrong pw, id가 없다면 fail이 나오도록 조건문을 썼다.
+분명 더 간단한 방법이 있을텐데 정말 가장 긴 방법으로 푼 것 같아서 아쉽다.
