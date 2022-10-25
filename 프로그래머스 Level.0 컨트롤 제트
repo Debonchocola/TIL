@@ -1,0 +1,19 @@
+컨트롤 제트
+
+숫자들이 공백으로 구분된 문자열이 주어집니다. 문자열에 있는 숫자를 차례대로 더하려고 합니다. 
+이 때 “Z”가 나오면 바로 전에 더했던 숫자를 뺀다는 뜻입니다. 
+숫자와 “Z”로 이루어진 문자열 s가 주어질 때, 머쓱이가 구한 값을 return 하도록 solution 함수를 완성해보세요.
+
+function solution(s) {
+    s = s.split(" ")
+    
+    while(s.includes('Z')) {
+        s.splice(s.indexOf('Z')-1,2)
+    }
+    return s.reduce((a,b) => a+parseInt(b), 0)
+}
+
+먼저 공백을 기준으로 나눠주고
+Z를 담고 있는 경우 while문 조건으로 해서 Z를 다 뺄때 까지 돌아가고
+Z이전의 숫자와 Z를 같이 빼도록 splice를 사용해서 2개를 빼준다.
+그 후에 reduce를 이용해서 더해준다.
