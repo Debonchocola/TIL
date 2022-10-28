@@ -1,0 +1,29 @@
+겹치는 선분의 길이
+
+빨간색, 초록색, 파란색 선분이 x축 위에 있습니다. 세 선분의 x좌표 시작과 끝이 [[start, end], [start, end], [start, end]] 형태로 들어있는 
+2차원 배열 lines가 매개변수로 주어질 때, 두 개 이상의 선분이 겹치는 부분의 길이를return 하도록 solution 함수를 완성해보세요.
+
+lines가 [[0, 2], [-3, -1], [-2, 1]]일 때 그림으로 나타내면 다음과 같습니다.
+
+const solution = (lines) => {
+    let answer = 0;
+    let dy = Array.from({length : 200}, () => 0)
+
+    for(let e of lines) {
+
+        let [start, end] = e.sort()
+        start += 100
+        end += 100
+
+        while(start < end){
+            dy[start]++
+            start++
+        }
+    }
+
+    dy.forEach((e) => {
+        if(e > 1) answer++
+    })
+
+    return answer
+}
