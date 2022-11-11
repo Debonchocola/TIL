@@ -1,0 +1,33 @@
+TypeScript
+사이즈 큰 프로젝트에서 사용
+
+에러메세지 퀄리티가 좋다.
+
+터미널에 npm install -g typescript
+
+.ts로 생성
+tsconfig.json
+
+{
+	“compilerOptions”: {
+	   “target”: “es5”,
+	   “module”: “commons”,
+	}
+}
+
+js파일로 컴파일시 터미널에  tsc -w
+
+변수에 타입 지정
+Let 이름 :string = ‘Kim’ ;
+Let 이름 :string[] = [‘Kim’ , ’park’] ;
+Let 이름 :{ name? : string } = { name : ‘Kim’ } ?는 속성이 옵션이라는 뜻
+Let 이름 : string | number. -> 2개 다 가능
+
+Function 함수 (x : number) : number {
+return x * 2
+}
+
+: number는 결과 값의 type
+
+tuple타입
+(Number, boolean)
