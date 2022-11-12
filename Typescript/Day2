@@ -1,0 +1,72 @@
+타입이 하나로 확정되지 않았을 경우 Type Narrowing 써야한다.
+
+Typeof , in(속성이 있는지?) , instance(부모)
+
+if(typeof x === ’string’) {
+	return x +1
+} 	else {
+	return x +1 
+}
+
+Type Assertion
+
+function 내함수(x :number | string){ 
+    return (x as number) + 1 
+}
+console.log( 내함수(123) 
+
+Narrowing 할 때 사용
+무슨 타입이 들어올지 100% 확실할때
+
+
+타입이 많을 때. (Type alias)
+Type Animal =  string | number | undefined
+
+Type Animal =  { name: string, age : number }
+
+let 동물 :  Animal = { name : ‘Kim’ , age : 20 }
+
+Const변수는 등호로 재할당만 막는 역할
+const로 담은 object 수정은 자유롭게 가능
+
+Const 출생지역 = { region : ’seoul’ }
+출생지역.region = ‘busan’
+
+
+typescript쓰면 막을 수 있다.  Readonly 사용해서
+
+type Girlfriend = {
+  readonly name : string,
+}
+
+let 여친 :Girlfriend = {
+  name : '엠버'
+}
+
+여친.name = '유라' //readonly라서 에러남
+
+
+속성 몇 개 선택사항이라면?
+
+type Square = {
+  color? : string,     //?사용하면 옵션이 됨
+  width : number,
+}
+
+let 네모2 :Square = { 
+  width : 100 
+}
+
+
+Type 합치기
+
+ 1. | 사용하기
+type Name = string;
+type Age = number;
+type NewOne = Name | Age;
+
+ 2. & 사용하기
+type PositionX = { x: number };
+type PositionY = { y: number };
+type XandY = PositionX & PositionY
+let 좌표 :XandY = { x : 1, y : 2 }
