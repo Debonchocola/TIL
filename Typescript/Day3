@@ -1,0 +1,66 @@
+type 키워드는 재정의 불가능
+type Name = string;
+type Name = number;
+
+
+Literal types. => const변수와 유사하게 사용
+
+Let 이름 : 123;   이제 123만 가능. 엄격하게 관리가능
+
+
+as const 문법
+var 자료 = {
+  name : 'kim'
+}
+
+function 내함수(a : 'kim') {
+
+}
+내함수(자료.name)
+
+에러가 발생한다. 그 이유는 자료는 타입이 string이고 
+내함수에는 kim이라는 타입이 와야하기 때문에
+
+해결방법
+1. object 만들 때 타입을 잘 미리 정하든가 
+2. 예전에 배웠던 assertion을 쓰시든가 (as 'kim' 이런걸 붙이는 겁니다)
+3. 아니면 as const 라는걸 애초에 object 자료에 붙일 수 있습니다. 
+
+var 자료 = {
+  name : 'kim'
+} as const;
+
+function 내함수(a : 'kim') {
+
+}
+내함수(자료.name)
+
+as const는 효과 2개
+1. 타입을 object의 value로 바꿔줍니다. (타입을 'kim'으로 바꿔줍니다)
+2. object안에 있는 모든 속성을 readonly로 바꿔줍니다 (변경하면 에러나게)
+
+
+함수타입 표현방법
+
+type NumOut = (x : number, y : number ) => number 
+let ABC :NumOut = function(x,y){
+  return x + y
+}
+
+
+methods 안에 타입지정하기 
+
+let 회원정보 = {
+  name : 'kim',
+  age : 30,
+  plusOne (x){
+    return x + 1
+  },
+  changeName : () => {
+    console.log('안녕')
+  }
+}
+회원정보.plusOne(1);
+회원정보.changeName();
+
+parseFloat => 문자열을 실수로 바꿔줌
