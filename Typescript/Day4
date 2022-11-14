@@ -1,0 +1,89 @@
+Next.js는 데이터를 불러오는 타이밍을 다양하게 지정할 수 있다.
+
+- getServerSideProps - 서버측에서 데이터를 불러온 다음, 클라이언트(브라우저)에 전달한다.
+- getStaticProps - Next.js에서 정적 사이트를 만든후, 클라이언트에 전달한다.
+
+ -- getServerSideProps
+[ 필요성 ]
+
+Next.js의 page가 렌더링 되기 전에, 미리 데이터를 완벽하게 불러오고 싶을때
+
+[ 작동방식 ]
+
+Next.js의 페이지(page) 내부에서 getServerSideProps 함수를 export한다면,
+
+Next.js가 이를 감지하고, 클라이언트에게 페이지를 보여주기 전에 getServerSideProps 함수를 먼저 실행해준다.
+
+next/link , next/router 이용해 페이지 변경 -> getServerSideProps 탐지, 실행
+
+// pages/user_info.js
+
+// getServerSideProps에서 props전달받기
+export default function User({user_data}){
+  return <div>
+    {user_data}
+  </div>
+}
+
+export async function getServerSideProps(){
+  // api 이용해서 데이터 불러오기 (async, await으로 기다려주기)
+  const res = await fetch("https://example_site.com/user_data")
+  
+  // page에 props로 전달하기위해, json 형식으로 변경해주기
+  const data = res.json()
+  
+  // 페이지 props로 전달하기 (json 형식만 가능)
+  return {
+    props: {
+      user_data: data
+    },
+  }
+}
+
+ -- getStaticProps
+[ 필요성 ]
+
+Next.js의 페이지(page) 내부에서
+
+1. 데이터를 headless CMS에서 불러오고 싶을때
+
+2. 데이터를 DB에서 불러오고 싶을때
+
+3. 데이터를 파일시스템에서 불러오고 싶을때
+
+4. 데이터를 공개적으로 캐시하고 싶을때
+
+5. 페이지를 pre-rendering 하고 싶을때 (SEO)
+
+[ 작동방식 ]
+
+getStaticProps 함수를 export한다면,
+
+Next.js가 이를 감지하고, 클라이언트에게 페이지를 보여주기 전에 getStaticProps 함수를 먼저 실행한다.
+
+이후 반환된 props를 이용해
+
+**["빌드과정"](https://defineall.tistory.com/834)**
+
+에 이 페이지를 미리 렌더링 해놓는다.
+
+Next.js 빌드 -> getStaticProps 탐지, 페이지 렌더링
+
+
+ -- getStaticPaths
+Next.js의 페이지 내부의 동적 경로의 페이지를
+
+getStaticPath를 사용해, 정적으로 생성할 경로 목록을 정의하고,
+
+이를 참고로 getStaticProps가 페이지를 미리 렌더링한다.
+
+HTML과 JSON 파일을 만들고, CDN으로 캐시된다. ( 성능향상 )
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { ... } }
+    ],
+    fallback: true // 백그라운드에서 실행, false or 'blocking'
+  };
+}
