@@ -1,0 +1,23 @@
+React-Query
+
+  useQuery
+  
+   - useQuery는 (queryKey, queryFn, options)인자를 갖는다
+   
+   
+    options
+
+    - keepPreviousData: 쿼리 키가 변경 될 경우 이전 쿼리 키 데이터를 다음 쿼리 키 데이터가 올때까지 가지고 있어서 부드럽게 변화되도록 돕는다
+    
+    - staleTime: 
+
+        - `staleTime` 은 데이터가 `fresh` 상태로 유지되는 시간이다. 해당 시간이 지나면 `stale` 상태가 된다.
+        - default staleTime은 0 이다.
+        - fresh 상태에서는 쿼리가 다시 mount 되어도 fetch가 실행되지 않는다.
+      
+    - refetchOnWindowFocus (boolean | "always")**
+
+        - `refetchOnWindowFocus` 는 데이터가 **stale 상태일 경우** 윈도우 포커싱 될 때 마다 refetch를 실행하는 옵션이다.
+        - 예를 들어, 크롬에서 다른 탭을 눌렀다가 다시 원래 보던 중인 탭을 눌렀을 때도 이 경우에 해당한다. 심지어 F12로 개발자 도구 창을 켜서 네트워크 탭이든, 콘솔 탭이든 개발자 도구 창에서 놀다가 페이지 내부를 다시 클릭했을 때도 이 경우에 해당한다.
+        - default true
+        - always 로 설정하면 항상 윈도우 포커싱 될 때 마다 refetch를 실행한다는 의미이다.
