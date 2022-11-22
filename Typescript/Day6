@@ -1,0 +1,41 @@
+HTML 조작시 narrowing 방법 4개
+
+  let 제목 = document.querySelector('#title');
+  제목.innerHTML = '반갑소'  
+
+  에러발생 변수가 null일 수 있기 떄문 
+
+1. let 제목 = document.querySelector('#title');
+    if (제목 != null) {
+      제목.innerHTML = '반갑소'
+    }
+
+2. let 제목 = document.querySelector('#title');
+    if (제목 instanceof HTMLElement) {
+      제목.innerHTML = '반갑소'
+    }
+    
+3. let 제목 = document.querySelector('#title') as HTMLElement;
+    제목.innerHTML = '반갑소'
+    
+4. let 제목 = document.querySelector('#title');
+    if (제목?.innerHTML != undefined) {
+      제목.innerHTML = '반갑소'
+    }
+    
+2번을 가장 많이 쓴다.
+3번은 최대한 사용하지 않는 것이 좋다.
+
+링크를 카카오로 
+<a class="naver" href="naver.com">링크</a>
+<a class="naver" href="naver.com">링크</a>
+<a class="naver" href="naver.com">링크</a> 
+
+
+let 링크 = document.querySelectorAll('.naver');
+
+링크.forEach((a)=>{
+  if (a instanceof HTMLAnchorElement){
+    a.href = 'https://kakao.com'
+  }
+})
