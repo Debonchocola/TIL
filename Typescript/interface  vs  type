@@ -1,0 +1,42 @@
+interface 장점
+  - extends로 복사 가능
+
+  interface Student {
+    name: string;
+  }
+  
+  interface Teacher extends Student{
+    age: number;
+  }
+  
+  let 학생: Student = { name: 'kim' }
+  let 선생: Teacher = { name: 'park' age: 25 }
+  
+  
+ interface  vs  type 차이점
+ 
+  interface: 중복선언 가능(합쳐짐)
+  
+    ex) interface Student {
+          name: string
+        }
+        
+        interface Student {
+          score: number
+        }
+        
+  그러나 중복속성은 에러 발생
+      
+      ex) interface Student {
+          name: string
+          }
+          
+          interface Teacher extends Student{
+            name: number;
+          }
+  
+  
+  
+  
+  
+  type: 중복선언 불가능
