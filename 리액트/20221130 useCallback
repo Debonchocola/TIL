@@ -1,0 +1,60 @@
+useCallback은 특정 함수를 새로 만들지 않고 재사용하고 싶을 때 사용하는 함수입니다.
+
+const memoizedCallback = useCallback(function, deps);
+useCallback은 첫 번째 인자로 넘어온 함수를, 두 번째 인자로 넘어온 배열 형태의 함수 실행 조건의 값이 변경될 때까지 저장해놓고 재사용할 수 있게 해 줍니다.
+
+예를 들며
+import React, { useState, useCallback } from "react";
+import Light from "./Light";
+
+function SmartHome() {
+  const [masterOn, setMasterOn] = useState(false);
+  const [kitchenOn, setKitchenOn] = useState(false);
+  const [bathOn, setBathOn] = useState(false);
+
+  const toggleMaster = () => {
+    setMasterOn(!masterOn);
+  };
+  const toggleKitchen = () => {
+    setKitchenOn(!kitchenOn);
+  };
+  const toggleBath = () => {
+    setBathOn(!bathOn);
+  };
+
+  return (
+    <div>
+      <Light room="침실" on={masterOn} toggle={toggleMaster}></Light>
+      <Light room="주방" on={kitchenOn} toggle={toggleKitchen}></Light>
+      <Light room="욕실" on={bathOn} toggle={toggleBath}></Light>
+    </div>
+  );
+}
+
+export default SmartHome;
+
+해당 코드에서 침실만 클릭해도 침실,주방,욕실이 모두 콘솔에 뜨는데 이 문제를 해결하기 위해서는
+
+ const toggleMaster = () => {
+    setMasterOn(!masterOn);
+  };
+  const toggleKitchen = () => {
+    setKitchenOn(!kitchenOn);
+  };
+  const toggleBath = () => {
+    setBathOn(!bathOn);
+  };
+  
+ 해당 부분을 useCallback을 사용해주면
+ 
+ const toggleMaster = useCallback(() => {
+    setMasterOn(!masterOn);
+  }, [masterOn]);
+  const toggleKitchen = useCallback(() => {
+    setKitchenOn(!kitchenOn);
+  }, [kitchenOn]);
+  const toggleBath = useCallback(() => {
+    setBathOn(!bathOn);
+  }, [bathOn]);
+  
+  해당 인자가 바꼈을 때만 동작하도록 만들어줍니다.
