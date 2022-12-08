@@ -33,7 +33,7 @@
 33. redux-thunk를 사용한 이유와 작동원리에 대해 설명하시오
 34. props와 state에 대해 설명해주세요
 35. .call과 .apply의 차이점은 무엇인가요?
-36. AJAX에 대해 자세히 설명하세요(+장단점)
+36. AJAX에 대해 자세히 설명하세요(+장단점) (완료)
 37. use strict 이 무엇인가요? 사용시 장단점이 무엇인가요?
 38. Box model에 대해 설명해주세요.
 39. Prototype이란? Prototype Chaining은?
