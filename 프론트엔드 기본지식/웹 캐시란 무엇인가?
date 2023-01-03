@@ -1,0 +1,40 @@
+웹 캐쉬
+  웹 캐쉬란 client가 요청하는 html, image, js, css등에 대해 첫 요청 시에 파일을 내려받아 특정 위치에 복사본을 저장(USING SPACE)하고, 
+  이후 동일한 URL의 Resource요청은 다시 내려 받지 않고 내부에 저장한 파일을 사용하여 더 빠르게 서비스(SAVE TIME)하기 위한 것입니다. 
+  서버를 통해 내려 받는 양이 적어지니 응답 시간이 감소하고 네트워크 트레픽이 감소되니 server와 client 모두가 win-win할 수 있는 최고의 tradeoff 인 셈입니다. 
+
+웹 캐쉬의 종류
+  1. Browser Caches
+    - 브라우저 또는 HTTP요청을 하는 Client Application에 의해 내부 디스크에 캐쉬
+    - Cache된 Resource를 공유하지 않는 한 개인에 한정된 Cache
+    - 브라우저의 Back버튼 또는 이미 방문한 페이지를 재 방문하는 경우 극대화
+   
+   2. Proxy Caches
+    - Browser Cache와 동일한 원리로 동작하며 Client나 Server가아닌 네트워크 상에서 동작.
+    - 큰회사나 IPS의 방화벽에 설치 되며 대기시간 & 트래픽 감소, 접근정책 & 제한 우회, 사용률 기록등 수행
+    - 한정된 수의 클라이언트을 위하여 무한대의 웹서버의 컨텐츠를 캐쉬
+    
+   3. Gateway Caches (REVERSE OR SURROGATE PROXY)
+    - 서버 앞 단에 설치되어 요청에 대한 캐쉬 및 효율적인 분배를 통해 가용성, 신뢰성, 성능등을 향상
+    - Encryption / SSL acceleration, Load balancing, Serve/cache static content, Compression등을 수행
+    - 무한대의 클라이언트들에게 한정된 수(또는 하나)의 웹서버 컨텐츠를 제공 
+    
+캐쉬 컨트롤 방법
+  1. HTML Meta Tags
+  2. HTTP Headers
+     - public : 일반적으로 HTTP 인증이 된 상태에서 일어나는 응답은 자동으로 private이 되는데,
+                public을 설정하면 인증이 된 상태에서도 캐쉬 하도록 한다.
+     - private : 특정 유저(사용자의 브라우저)만 캐쉬 하도록 설정, 여러 사람이 사용하는 중간자 역할하는
+                 shared caches의 경우 캐쉬되지 않는다.
+     - no-cache : 응답 데이터를 캐쉬하고는 있지만, 먼저 서번에 요청해서 유효성 검사을 하도록 강제
+                  어느 정도 캐쉬의 효용을 누리면서도 컨텐츠의 freshness를 강제로 유지하는데 좋다.
+    
+    
+    
+    
+    
+    
+    
+    
+    
+https://hahahoho5915.tistory.com/33 참조
