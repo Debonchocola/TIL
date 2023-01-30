@@ -1,0 +1,9 @@
+function solution(numbers) {
+    var answer = 0;
+    
+    for(let i =0; i<10; i++) {
+        if(!numbers.includes(i))  answer +=i;   // includes를 통해서 없는 숫자를 출력해서 더해줬다.
+    }
+   return answer;
+}
+
