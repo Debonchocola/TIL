@@ -1,0 +1,24 @@
+function solution(n, m) {
+    var answer = [];
+
+    const greatest = (a, b) => {  
+        if (b === 0) return a   
+        return greatest(b, a % b)  
+    }
+
+    const least = (a,b) => (a*b) / greatest(a,b)
+    
+    return [greatest(n,m), least(n,m)]
+}
+
+
+유클리드 호제법을 보고 코드를 작성했는데, for문을 활용한 방법이 있어서 가져와봤다.
+
+function gcdlcm(a, b) {
+    var r;
+    for(var ab= a*b;r = a % b;a = b, b = r){}
+    return [b, ab/b];
+}
+
+for문의 2번째 인자가 조건식이라는 사실을 생각도 안 하고 사용했던 것 같다.
+0이 되면 for문을 멈춘다.
