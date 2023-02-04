@@ -1,0 +1,16 @@
+function solution(price, money, count) {
+    let answer = 0;
+
+    for (let i = 1; i <= count; i++) {
+        answer += price * i;
+    }
+
+    return answer > money ? answer - money : 0;
+}
+매우 간단한 문제였다. 그러나 간단한 수학공식을 기억했다면 더 간단한 코드로 가능 하다는 것을 느꼈다...
+
+
+function solution(price, money, count) {
+    const tmp = price * count * (count + 1) / 2 - money;
+    return tmp > 0 ? tmp : 0;
+}
