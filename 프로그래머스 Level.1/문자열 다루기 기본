@@ -5,3 +5,5 @@ function solution(s) {
         return false;
     }
 }
+
+모든 조건이 맞아야 할 경우 every 메서드 
