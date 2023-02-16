@@ -1,0 +1,72 @@
+Promise.all
+  여러개의 PromiseLike
+  함수들을 병렬로 실행하여 효율성을 높여주는 함수
+ 
+Promise.allSettled
+  iterator의 모든 Promise함수들의 결과가 처리(fulfilled
+  또는 rejected)될 때까지 대기한 뒤 결과를 반환하는 함수
+  
+특징
+  1. PromiseLike 타입의 배열형태의 결과 반환
+  2. status & reason/value 프로퍼티를 가진다.
+  3. status는 fulfilled 와 rejected 값을 가짐
+  4. value는 fulfilled 일 때, reason은 rejected일 때 값
+  
+ allSettled<T>(values: Iterable<T>): Promise<PromiseSettledResult<T extends PromiseLike<infer U> ? U : T>[]>;
+ 
+  type PromiseSettledResult<T> = PromiseFulfilledResult<T> | PromiseRejectedResult;
+
+  interface PromiseFulfilledResult<T> {
+      status: "fulfilled";
+      value: T;
+  }
+
+  interface PromiseRejectedResult {
+      status: "rejected";
+      reason: any;
+  }
+  
+  구현
+    /**
+     * user 목록을 조회하는 함수
+     */
+    async function apiCall(p: number = 1) {
+      console.log('### Get API start', p)
+      if (p === 0) throw new Error('invalid argument')
+      return fetch(`https://reqres.in/api/users?page=${p}`)
+    }
+  
+  Promise.all
+    async function main() {
+      const task = [apiCall(0), apiCall(1)]
+      try {
+        const result = await Promise.all(task)
+        console.log('result', result)
+      } catch(e) {
+        console.log('error', e)
+      }
+    }
+
+    // ### Get API start, 0
+    // ### Get API start, 1
+    // error [Error: invalid argument]
+    
+   Promise.allSettled
+    async function main() {
+    const task = [apiCall(0), apiCall(1)]
+    try {
+      const result = await Promise.allSettled(task)
+      console.log('result', result)
+    } catch(e) {
+      console.log('error', e)
+    }
+  }
+
+  // ### Get API start, 0
+  // ### Get API start, 1
+  // result [ 
+  //    { status: 'rejected', reason: [Error: invalid argument] }, 
+  //    { status: 'fulfilled', value: Response {...} }
+  // ]
+
+  task(iterator)의 성공여부과 상관없이 결과를 보장한다는 점에서 이점이 있다.
