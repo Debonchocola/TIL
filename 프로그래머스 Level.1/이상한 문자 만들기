@@ -1,13 +1,13 @@
 function solution(s) {
     let answer = '';
-    let words = s.split(' ');
+    let words = s.split(' ');    // 공백을 기준으로 나눠져서 배열로 담긴다.
     
-    for (let i = 0; i < words.length; i++) {
-        for(let j = 0; j < words[i].length; j++) {
+    for (let i = 0; i < words.length; i++) {  // 단어별로 나누는 기준
+        for(let j = 0; j < words[i].length; j++) { //단어를 알파벳 하나씩 나누기
             if(j % 2 === 0) {
-                answer += words[i][j].toUpperCase();
+                answer += words[i][j].toUpperCase();  //짝수인 경우
             } else {
-                answer += words[i][j].toLowerCase();
+                answer += words[i][j].toLowerCase();  //홀수인 
             }
         }
         if (i < words.length -1) {
