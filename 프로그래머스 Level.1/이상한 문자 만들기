@@ -10,7 +10,7 @@ function solution(s) {
                 answer += words[i][j].toLowerCase();  //홀수인 경우
             }
         }
-        if (i < words.length -1) {
+        if (i < words.length -1) {  //try 와 hello 뒤에 공백 
             answer += ' ';
         }
     }
