@@ -7,7 +7,7 @@ function solution(s) {
             if(j % 2 === 0) {
                 answer += words[i][j].toUpperCase();  //짝수인 경우
             } else {
-                answer += words[i][j].toLowerCase();  //홀수인 
+                answer += words[i][j].toLowerCase();  //홀수인 경우
             }
         }
         if (i < words.length -1) {
