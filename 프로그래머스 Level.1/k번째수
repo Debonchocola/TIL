@@ -1,0 +1,21 @@
+function solution(array, commands) {
+    var answer = [];
+    
+    for(let i=0; i<commands.length; i++) {
+       answer.push(array.slice(commands[i][0]-1,commands[i][1]).sort((a,b)=> a-b)[commands[i][2]-1]);   
+    }
+    return answer;
+}
+
+나는 for문을 이용해서 풀었다. map을 활용한 다른 사람 풀이가 있어서 가져와 봤다.
+map은 명칭을 정할 수 있어서 저렇게 a로 사용할 수 있어서 편하다.
+
+
+function solution(array, commands) {
+    var answer = [];
+
+    answer = commands.map(a=>{
+        return array.slice(a[0]-1,a[1]).sort((b,c)=>b-c)[a[2]-1];
+    })
+    return answer;
+}
