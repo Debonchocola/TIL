@@ -1,9 +1,31 @@
 function solution(numbers) {
     var answer = [];
-    for ( let i = 0; i < numbers.length; i++) {
-      for ( let j = i + 1; j < numbers.length; j++) {
-        let sum = number[i] + number[j];
-      }
+  
+    for(let i=0; i<numbers.length; i++) {
+        for(let j=i+1; j<numbers.length; j++) {   //두 수를 더하기 때문에 i,j필요 j는 i가 아닌 숫자를 선택하기 위해 +1
+            let sum = numbers[i] + numbers[j];    //합을 구하고
+            if(answer.indexOf(sum) === -1) {      //없는 값만 담기 -> 중복 방지  
+                answer.push(sum);
+            }
+        }
+        
     }
-    return answer;
+    return answer.sort((a,b) => a-b);
 }
+
+다른 사람 풀이
+function solution(numbers) {
+    const temp = []
+
+    for (let i = 0; i < numbers.length; i++) {
+        for (let j = i + 1; j < numbers.length; j++) {
+            temp.push(numbers[i] + numbers[j])
+        }
+    }
+
+    const answer = [...new Set(temp)]
+
+    return answer.sort((a, b) => a - b)
+}
+
+Set을 활용해서 중복 문제를 해결했다.
