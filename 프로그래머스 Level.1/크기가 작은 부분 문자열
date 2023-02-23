@@ -1,0 +1,14 @@
+function solution(t, p) {
+    var answer = 0;
+    let count = 0;
+    const numP = Number(p) //문자열이라 필요하다.
+
+    for (let i=0; i < t.length - p.length +1; i++) {   p.length만큼 잘라서 비교할 것이기 때문에 빼준다.
+        answer = Number(t.slice(i,i+p.length)); //문자열을 숫자로 변경
+
+        if(answer <= numP){ //p가 큰 경우의 수를 구하는 문제이기 떄문에 count에 담아준다.
+            count += 1;
+        }
+    }
+    return count;
+}
