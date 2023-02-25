@@ -1,0 +1,9 @@
+function solution(a, b, n) {
+    let answer=0;
+    while(n >= a) {                      // a 보다 크거나 같을 떄 계속 진행
+        answer += Math.floor(n/a)*b ;    // 받은 콜라의 갯수
+        
+        n = Math.floor(n/a)*b + n%a;     // 남은 병의 갯수
+    }
+    return answer;
+}
