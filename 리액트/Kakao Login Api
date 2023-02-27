@@ -1,0 +1,108 @@
+SDK 활용
+
+1. index.html에 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script> 넣기
+
+2. App.js 경로 지정
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route exact path="/" element={<Kakao />} />
+          <Route path="/oauth/kakao/callback" element={<Auth />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </div>
+    </Router>
+    
+3.Kakao.js
+const Kakao = () => {
+  const REST_API_KEY = "REST_API_KEY";
+  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  return (
+    <div>
+      <a href={KAKAO_AUTH_URL}>Kakao Login</a>
+    </div>
+  );
+};
+
+export default Kakao;
+
+4. Auth.js
+
+import React from "react";
+import { useEffect } from "react";
+import axios from "axios";
+import qs from "qs";
+import { useNavigate } from "react-router-dom";
+const Auth = () => {
+  const REST_API_KEY = "REST_API_KEY";
+  const REDIRECT_URI = "http://localhost:3000/oauth/kakao/callback";
+  const CLIENT_SECRET = "CLIENT_SECRET";
+  // calllback으로 받은 인가코드
+  const code = new URL(window.location.href).searchParams.get("code");
+  const history = useNavigate();
+  const getToken = async () => {
+    const payload = qs.stringify({
+      grant_type: "authorization_code",
+      client_id: REST_API_KEY,
+      redirect_uri: REDIRECT_URI,
+      code: code,
+      client_secret: CLIENT_SECRET,
+    });
+    try {
+      // access token 가져오기
+      const res = await axios.post(
+        "https://kauth.kakao.com/oauth/token",
+        payload
+      );
+
+      // Kakao Javascript SDK 초기화
+      window.Kakao.init(REST_API_KEY);
+      // access token 설정
+      window.Kakao.Auth.setAccessToken(res.data.access_token);
+      history("/profile");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getToken();
+  }, []);
+  return null;
+};
+export default Auth;
+
+5.Profile.js
+
+import React, { useEffect, useState } from "react";
+const Profile = () => {
+  const [user_id, setUserId] = useState();
+  const [nickName, setNickName] = useState();
+  const [profileImage, setProfileImage] = useState();
+  const getProfile = async () => {
+    try {
+      // Kakao SDK API를 이용해 사용자 정보 획득
+      let data = await window.Kakao.API.request({
+        url: "/v2/user/me",
+      });
+      // 사용자 정보 변수에 저장
+      setUserId(data.id);
+      setNickName(data.properties.nickname);
+      setProfileImage(data.properties.profile_image);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getProfile();
+  }, []);
+  return (
+    <div>
+      <h2>{user_id}</h2>
+      <h2>{nickName}</h2>
+      <img src={profileImage}></img>
+    </div>
+  );
+};
+
+export default Profile;
