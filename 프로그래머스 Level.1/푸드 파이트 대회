@@ -1,0 +1,9 @@
+function solution(food) {
+    var answer = '';
+    for(let i=0; i<food.length; i++) {
+        answer += String(i).repeat(Math.floor(food[i]/2));  // 음식을 2번 나눠야 하니까 2로 나눠주고 
+    }
+    return answer + '0' + [...answer].reverse().join('');   //중간에 0을 넣고 반대로 넣어야 해서 reverse를 활용하고 출력 방식에 맞춰 join을 해줬다.
+}
+
+우선 문제를 이해하는데 시간이 좀 걸린 문제였다.
