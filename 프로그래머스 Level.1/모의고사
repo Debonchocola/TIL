@@ -14,3 +14,27 @@ function solution(answers) {
     if (a3c === max) {answer.push(3)};
     return answer;
 }
+위의 코드보다 밑의 코드가 좋은 점은 반복문 한번으로 끝낸다는 점 최대한 이제 시간복잡도를 생각해보자!!
+
+function solution(answers) {
+    var answer = [];
+    const man1 = [1, 2, 3, 4, 5];
+    const man2 = [2, 1, 2, 3, 2, 4, 2, 5];
+    const man3 = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
+    let count = [0, 0, 0];                       //하나씩 담을 필요 없이 이런 방식으로 하면 비교하기도 편해진다.
+
+    for(let i = 0; i < answers.length; i++) {
+        if(answers[i] == man1[i % man1.length]) count[0]++; 
+        if(answers[i] == man2[i % man2.length]) count[1]++;
+        if(answers[i] == man3[i % man3.length]) count[2]++;
+    }
+
+    const max = Math.max(count[0], count[1], count[2]);
+    for(let i = 0; i < count.length; i++) {
+        if(max == count[i]) answer.push(i + 1);
+    }
+
+    return answer;
+}
+
+핵심은 let count = [0, 0, 0];  , man1[i % man1.length] 이렇게 2가지라고 생각한다.
