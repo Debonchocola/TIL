@@ -34,5 +34,40 @@
 
     6. 구글 Doc 같이 여러 명이 동시 접속해서 수정할 수 있는 Tool
     
+   
+  생성
+    webSocket = new WebSocket(url, protocols);
     
-    출처: https://choseongho93.tistory.com/266
+    url = 연결할 URL
+    
+    protocols = 프로토콜 문자열, 또는 프로토콜 문자열의 배열
+    
+    SECURITY_ERR = 접속을 시도하고 있는 포트가 차단되었습니다.
+    
+    예제
+      let exampleSocket = new WebSocket("ws://www.example.com/socketserver", "protocolOne"); //protocols 부분 생략 가능
+    
+      서버로 데이터 전송  .send()
+      exampleSocket.send("Here's some text that the server is urgently awaiting!");
+      
+      * 연결은 비동기 작업이기에 WebSocket 오브젝트를 생성하자마자 send() 로 데이터 전송을 시도하는것은 성공하지 않을 가능성이 있습니다.
+      onopen 핸들러를 정의하고, 그 위에서 작업
+      exampleSocket.onopen = function (event) {
+        exampleSocket.send("Here's some text that the server is urgently awaiting!");
+      };
+      
+      서버로 데이터 수신 .onmessage
+      exampleSocket.onmessage = function (event) {
+        console.log(event.data);
+      }
+      
+      연결 종료
+      exampleSocket.close();
+      연결을 닫아버리기 전에 bufferedAmount 어트리뷰트를 조사하여 아직 네트워크에 전달되지 않은 데이터가 있는지 검사하는것도 좋은 방법입니다.
+      
+      
+      
+      
+      
+      
+    출처: https://choseongho93.tistory.com/266, https://developer.mozilla.org/ko/docs/Web/API/WebSockets_API/Writing_WebSocket_client_applications
