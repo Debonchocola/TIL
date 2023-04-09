@@ -1,24 +1,24 @@
 function solution(n, lost, reserve) {
-    var answer = n-lost.length;
+    var answer = n-lost.length;         //체육복을 가진 인원
 
-    let realLost=lost.filter((l)=>!reserve.includes(l));
-    let realReserve=reserve.filter((r)=>!lost.includes(r));
-    answer+=lost.length-realLost.length;
+    let realLost=lost.filter((l)=>!reserve.includes(l));   //여분의 체육복이 없는 도난 당한 인원
+    let realReserve=reserve.filter((r)=>!lost.includes(r));  //2개의 체육복을 가진 인원
+    answer+=lost.length-realLost.length;   // 도난 당했지만 여분이 있는 경우 추가
 
-    realLost.sort((a,b)=>a-b);
+    realLost.sort((a,b)=>a-b);  앞 뒤로 빌릴 수 있는지 확인을 위해 정렬
 
     realLost.forEach((l)=>{
         if(realReserve.length===0){
             return;
         }
 
-        if(realReserve.includes(l-1)){
-            realReserve=realReserve.filter((r)=>r!==l-1);
-            answer++;
+        if(realReserve.includes(l-1)){         // 앞에 있는지 확인
+            realReserve=realReserve.filter((r)=>r!==l-1);   //이미 빌린 경우 제거
+            answer++;   // 한 명 추가
         }
-        else if(realReserve.includes(l+1)){
-            realReserve=realReserve.filter((r)=>r!==l+1);
-            answer++;
+        else if(realReserve.includes(l+1)){    // 뒤에 있는지 확인
+            realReserve=realReserve.filter((r)=>r!==l+1);   //이미 빌린 경우 제거
+            answer++;   // 한 명 추가
         }
 
     })
