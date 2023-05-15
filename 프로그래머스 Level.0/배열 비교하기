@@ -1,0 +1,19 @@
+function solution(arr1, arr2) {
+    var answer = 0;
+    if (arr1.length > arr2.length) {
+        return 1;
+    } else if (arr1.length === arr2.length) {
+        let Arr1 = arr1.reduce((a,c) => a + c);
+        let Arr2 = arr2.reduce((a,c) => a + c);
+        if (Arr1 > Arr2) {
+            return 1
+        } else if (Arr1 < Arr2) {
+            return -1
+        } else {
+            return 0
+        }
+    } else {
+        return -1
+    }
+    return answer;
+}
