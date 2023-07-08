@@ -1,0 +1,35 @@
+const Dfs = () => {
+  const graph = {
+    A: ["B", "C"],
+    B: ["A", "D", "E"],
+    C: ["A", "F", "G"],
+    D: ["B", "H", "I"],
+    E: ["B", "J"],
+    F: ["C"],
+    G: ["C", "K"],
+    H: ["D"],
+    I: ["D"],
+    J: ["E"],
+    K: ["G"],
+  };
+
+  const dfs = (graph, startNode) => {
+    const visited = [];
+    let needVisit = [];
+
+    needVisit.push(startNode);
+    while (needVisit.length !== 0) {
+      const node = needVisit.pop(); // stack의 후입선출로 pop() 사용
+      if (!visited.includes(node)) {
+        visited.push(node);
+
+        needVisit = [...needVisit, ...graph[node]];
+      }
+    }
+
+    return visited;
+  };
+  console.log(dfs(graph, "A"));
+};
+
+export default Dfs;
