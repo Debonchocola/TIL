@@ -1,0 +1,15 @@
+const bfs = (graph, startNode) => {
+    const visited = [];
+    let needVisit = [];
+
+    needVisit.push(startNode);
+    while (needVisit.length !== 0) {
+      const node = needVisit.shift(); // stack의 후입선출로 pop() 사용
+      if (!visited.includes(node)) {
+        visited.push(node);
+        needVisit = [...needVisit, ...graph[node]];
+      }
+    }
+
+    return visited;
+  };
