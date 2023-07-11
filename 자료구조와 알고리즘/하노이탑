@@ -1,0 +1,27 @@
+const Hanoi = () => {
+  let left = [1, 2, 3, 4, 5];
+  let mid = [];
+  let right = [];
+
+  mid.push(left.shift());
+  if (mid.length > 0 && mid[mid.length - 1] > left.shift()) {
+    mid.push(left.shift());
+  } else if (mid[mid.length - 1] < left.shift()) {
+    right.push(left.shift());
+    if (right.length > 0 && right[right.length - 1] > left.shift()) {
+        right.push(left.shift());
+    } else { 
+        
+    }
+  }
+  console.log(mid);
+  console.log(right);
+  //   while (right.length < 5) {
+  //     console.log(left.shift());
+  //   }
+  l : 1
+  m : 2 1m  < l ? r : m  (m< l && r < l) ? m <r ? r.push(m.shift())  (m < l && r < l && (m.length > 1 || r.length > 1)) ? 
+  r :  5 4 3 2 1
+}; 
+
+export default Hanoi;
