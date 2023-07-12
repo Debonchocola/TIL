@@ -25,3 +25,11 @@ const Hanoi = () => {
 }; 
 
 export default Hanoi;
+
+1: right.push(left.shift());  //1 r
+2: mid.push(left.shift()); //2 m
+3: l > r && l > m => mid.push(right.pop()) // 1 2 m
+4: right.push(left.shift()); //3 r
+5: l > r && l > m => m < r ? left.unShift(mid.pop()); //1 4l,  2m,  3r
+6: right.push(mid.pop());
+7: 
