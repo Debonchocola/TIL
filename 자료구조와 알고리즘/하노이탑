@@ -1,7 +1,23 @@
-const Hanoi = (num, from, to, other) => {
-    if (num === 0) return;
-    hanoi (num - 1, from, other, to);
-    hanoi (num -1, other, to, from);
-}
-
-export default Hanoi;
+const Hanoi = () => {
+    const leftStack = [4, 3, 2, 1];
+    const rightStack: number[] = [];
+    const midStack: number[] = [];
+  
+    const hanoi = (n: number, left: number[], right: number[], mid: number[]) => {
+      console.log(leftStack, rightStack, midStack);
+      if (n === 1) {
+        let disk = left.pop();
+        right.push(Number(disk));
+      } else {
+        hanoi(n - 1, left, mid, right);
+        console.log(leftStack, rightStack, midStack);
+        let disk = left.pop();
+        right.push(Number(disk));
+        hanoi(n - 1, mid, right, left);
+      }
+    };
+    hanoi(4, leftStack, rightStack, midStack);
+    return null;
+  };
+  
+  export default Hanoi;
