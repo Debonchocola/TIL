@@ -1,0 +1,28 @@
+const NQueens = () => {
+    const nQueensPrac= (i, col) => {
+        n = col.length - 1; 
+
+        if (check(i, col)) {
+            if (i === n) {
+    
+            } else {
+    
+                nQueensPrac()
+            }
+        }
+    }
+    const check = (i,col) => {
+        j = 1;
+        check = true;
+        while (j < i) {
+            if (col[i] === col[j] || Math.abs(col[i] - col[j] === (i - j))) {
+                check = false;
+                j += 1;
+            }
+            return check;
+        }
+
+    }
+}
+
+export default NQueens;
