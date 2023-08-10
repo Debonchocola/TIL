@@ -1,28 +1,70 @@
 const NQueens = () => {
-    const nQueensPrac= (i, col) => {
-        n = col.length - 1; 
+    let count = 0;
 
-        if (check(i, col)) {
-            if (i === n) {
-    
-            } else {
-    
-                nQueensPrac()
-            }
-        }
-    }
-    const check = (i,col) => {
-        j = 1;
-        check = true;
-        while (j < i) {
-            if (col[i] === col[j] || Math.abs(col[i] - col[j] === (i - j))) {
-                check = false;
-                j += 1;
-            }
-            return check;
-        }
+    function solution(n) {
+        const board = new Array(n).fill(0);
+        locate(board, 0, n);
+        return count;
+     }
 
-    }
-}
+     function check () {
+        
+     }
+  const nQueensPrac = (i, col) => {
+      let n = col.length - 1;
+
+      if (check(i, col)) {
+          if (i === n) {
+
+          } else {
+
+              nQueensPrac()
+          }
+      }
+  }
+  const check = (i,col) => {
+      let j = 1;
+      check = true;
+      while (j < i) {
+          if (col[i] === col[j] || Math.abs(col[i] - col[j] === (i - j))) {
+              check = false;
+              j += 1;
+          }
+          return check;
+      }
+
+  }
+//   const sol = (N) => {
+//     const row = new Array(N).fill(0);
+//     let cnt = 0;
+
+//     function isPossible(L, X) {
+//       // L행 X열에 퀸을 둘 수 있는지 판단하기 위해 0 ~ L-1행까지 상하좌우 + 대각선까지 조회.
+//       for (let i = 0; i < L; i++) {
+//         if (X === row[i]) return false;
+//         if (Math.abs(X - row[i]) === L - i) return false;
+//       }
+//       return true;
+//     }
+
+//     function dfs(L) {
+//       if (L === N) {
+//         cnt++;
+//         return;
+//       }
+//       for (let i = 0; i < N; i++) {
+//         if (isPossible(L)) {
+//           // L행 i열에 둘 수 있다면 실행.
+//           row[L] = i;
+//           dfs(L + 1);
+//         }
+//       }
+//     }
+
+//     dfs(0);
+//     return cnt;
+//   };
+//   console.log(sol(4));
+};
 
 export default NQueens;
