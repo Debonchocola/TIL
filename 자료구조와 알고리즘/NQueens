@@ -68,3 +68,68 @@ const NQueens = () => {
 };
 
 export default NQueens;
+
+
+const NQueens = () => {
+  const sol = (n) => {
+    let results = [];
+
+    const isValid = (colPlacement) => {
+      let rows = colPlacement.length - 1;
+      console.log(colPlacement);
+      console.log(rows);
+      for (let i = 0; i < rows; i++) {
+        let diff = Math.abs(colPlacement[i] - colPlacement[rows]); // col difference
+        // rows - i == row diff between current and previous
+        // diagonal check is when the slope is same y1 - y2 === x1 - x2
+        if (diff === 0 || diff === rows - i) {
+          // its either on same column or on same diagonals
+          return false;
+        }
+      }
+      return true;
+    };
+
+    const solve = (n, row, colPlacement, results) => {
+      if (row === n) {
+        console.log(row);
+        // last move to put on row === n is valid, we found valid moves
+        // creating a shallow copy of colPlacement to add before pointer gets mutated as it goes back up the stack
+        results.push([...colPlacement]);
+      } else {
+        for (let col = 0; col < n; col++) {
+          console.log(colPlacement);
+          colPlacement.push(col);
+
+          if (isValid(colPlacement)) {
+            solve(n, row + 1, colPlacement, results);
+          }
+          //   console.log(colPlacement);
+          colPlacement.pop();
+        }
+      }
+    };
+
+    solve(n, 0, [], results);
+    // console.log(results);
+    results = results.map((result) => {
+      return result.map((row, index) => {
+        let newRow = "";
+        for (let i = 0; i < n; i++) {
+          if (i === row) {
+            newRow += "Q";
+          } else {
+            newRow += ".";
+          }
+        }
+        // console.log(newRow);
+        return newRow;
+      });
+    });
+    // console.log(results);
+    return results;
+  };
+  sol(4);
+};
+
+export default NQueens;
