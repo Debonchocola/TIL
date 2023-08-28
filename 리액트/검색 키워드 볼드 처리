@@ -1,0 +1,51 @@
+export const highlightText = (
+  text: string,
+  inputValue: string
+): JSX.Element => {
+  const regex = new RegExp(`(${inputValue})`, "gi");
+  return (
+    <>
+      {text.split(regex).map((word, idx) => {
+        return word === inputValue ? (
+          <span className="highlight" key={idx}>
+            {word}
+          </span>
+        ) : (
+          word
+        );
+      })}
+    </>
+  );
+};
+
+const replaceMatchedTextToBold = ( 
+   searchSentence: string, 
+   typedSearchWord: string 
+ ) => { 
+   const isMatchedTextRegExp = new RegExp(typedSearchWord, 'g'); 
+  
+   return searchSentence.replace( 
+     isMatchedTextRegExp, 
+     `<strong>${typedSearchWord}</strong>` 
+   ); 
+ }; 
+
+const SuggestionDropdown = ({
+  sickNm,
+  target,
+  isSelected,
+  handleOnClick,
+}: Props) => {
+  const index = sickNm.indexOf(target);
+  const endIndex = index + target.length;
+  const prev = sickNm.slice(0, index);
+  const next = sickNm.slice(endIndex);
+
+  return (
+    <li className={isSelected ? 'selected' : ''} onClick={handleOnClick}>
+      {prev}
+      <BoldText>{target}</BoldText>
+      {next}
+    </li>
+  );
+};
