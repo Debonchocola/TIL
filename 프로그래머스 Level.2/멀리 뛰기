@@ -1,0 +1,12 @@
+function solution(n) {
+    var answer = 0;
+    let stack = [1,1];
+
+    const Fibonacci = (num) => {
+        for(let i = 0; i < num-1; i++) {
+            stack.push((stack[i] + stack[i+1])%1234567);
+        }
+    }
+    Fibonacci(n);
+    return stack.pop();
+}
