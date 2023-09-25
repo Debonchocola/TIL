@@ -1,0 +1,14 @@
+setState(e.target.value as unknown as T) => 강제 변환
+const user = 'Sender' in data ? data.Sender : data.User; 타입가드
+\d 숫자 +는 1개 이상 ?는 0개나 1개 * 0개 이상
+/g 모두 찾기
++? 최대한 조금
+() 그루핑 => 배열에 담김  ...arr
+pattern: /@\[(.+?)]\((\d+?)\)|\n/g,
+
+a??b; //nullish coalescing
+& strong { //nested selector
+ }
+[].concat(arr),[...arr] => 새로운 배열로
+Object.entries() => 객체를 배열로
+forwardRef => ref 다른곳에서 전달 받아서 쓸 때
