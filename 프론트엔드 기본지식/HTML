@@ -1,1 +1,38 @@
-1
+form 태그
+form 태그는 사용자가 입력한 데이터를 수집하기 위해 사용되며 
+input, textarea, button, select, checkbox, radio button, submit button 등의 입력 양식 태그를 포함할 수 있다.
+
+action, method 두 가지의 어트리뷰트를 갖으며
+action은 데이터 전송될 URL 지정
+method는 방식 지정
+Get Post가 있음
+
+Get
+예) http://jsonplaceholder.typicode.com/posts?userId=1&id=1
+URL에 전송 데이터가 모두 노출되기 때문에 보안에 문제가 있으며 전송할 수 있는 데이터의 한계가 있다. (최대 255자).
+
+Post
+예) http://jsonplaceholder.typicode.com/posts
+안전하지만 Get에 비해 속도가 느림
+
+select 태그
+<select name="cars3">
+  <optgroup label="Swedish Cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+  </optgroup>
+  <optgroup label="German Cars" disabled>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </optgroup>
+</select>
+
+optiongroup을 통해 그룹을 지을 수 있다.
+
+fieldset
+<fieldset>
+  <legend>Login</legend>
+  Username <input type="text" name="username">
+  Password <input type="text" name="password">
+</fieldset>
+입력 양식을 그룹화 할 때 사용
