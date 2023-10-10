@@ -1,0 +1,17 @@
+전체 셀렉터
+* {color: red;}
+
+태그 셀렉터
+h1 {color: red;}
+<h1>Heading</h1>
+
+id 셀렉터
+#p1 {color: red;}
+<p id="p1">paragraph 1</p>
+
+class 셀렉터
+.container {font-size: 16px}
+.point {color: red}
+<div className="container point">paragraph</div>
+
+여러개 사용 가능
