@@ -126,3 +126,42 @@ background-attachment: fixed; => 배경화면 위에 글을 올린 경우 스크
 white-space 줄바꿈이 되지 않게 하기 위해서는 nowrap, pre를 사용 차이점은 pre는 공백이나 들여쓰기를 그대로 반영
 
 text-overflow: ellipsis 문장이 긴 경우 ...처리 
+
+word-wrap: break-word 은 단어가 부모영역을 나간 경우 안으로 들어가게 하는데 단어를 어느정도 고려하여 개행한다.
+word-break: break-all 은 고려하지 않고 강제 개행한다.
+
+position: relative는 부모 기준으로 좌표를 사용하여 위치
+absolute는 부모가 없으면 body를 기준으로 위치 즉 부모 요소 벗어나 자유롭게 위치 가능
+fixed는 부모 요소 상관 없이 좌표 값을 기준으로 위치
+
+float을 선언한 자녀 요소를 가진 부모 요소의 높이가 정상적이지 않은 경우가 있는데 float 요소의 높이를 알 수 없기 떄문
+해결방법은 부모요소에 overflow: hidden 선언 하거나 다른 클라스를 하나 더 줘서 그곳에서 clear: both를 하는 방법이다
+
+상속이 되는 프로퍼티가 있고 아닌 프로퍼티가 있는데 
+상속이 되는 대표적인 프로퍼티로는 color가 있다.
+
+캐스캐이딩
+  중요도 -선언 위치에 따라 우선순위 달라짐
+    1. head 요소 내의 style 요소
+    2. head 요소 내의 style 요소 내의 @import 문
+    3. <link> 로 연결된 CSS 파일
+    4. <link> 로 연결된 CSS 파일 내의 @import 문
+    5. 브라우저 디폴트 스타일시트
+  
+  명시도
+    !important > 인라인 스타일 > 아이디 선택자 > 클래스/어트리뷰트/가상 선택자 > 태그 선택자 > 전체 선택자 > 상위 요소에 의해 상속된 속성
+
+  선언순서 - 나중에 선언된 스타일이 우선 적용됨.
+
+Transition 일정시간에 걸쳐서 변화를 일으키고 싶을 떄 사용
+  transition-property: width, background-color; //요소 선택
+  transition-duration: 2s, 2s; //일어나는 지속시간 설정 *필수
+    
+  모든 요소가 가능한건 아니다 예로 display 프로퍼티는 불가
+  또한 layout을 변화시키는 width,height, margin, padding은 속도 저하를 일으킨다.
+
+  transition-timing-function을 통해 적용하는 속도의 변화도 줄 수 있다.
+  ease는 느리게 시작하여 점점 빨라지다가 느리게 종료
+  linear 등속운동
+  ease-in 느리게 시작 후 일정 속도 되면 등속
+  등등 있다.
