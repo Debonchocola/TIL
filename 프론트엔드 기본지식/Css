@@ -165,3 +165,29 @@ Transition 일정시간에 걸쳐서 변화를 일으키고 싶을 떄 사용
   linear 등속운동
   ease-in 느리게 시작 후 일정 속도 되면 등속
   등등 있다.
+
+애니메이션
+  1. @keyframes - 시점을 설정할 수 있음
+  @keyframes move {
+    from { left: 0}
+   
+    to { left: 300px}
+  }
+
+  @keyframes move {
+    0%   { left: 0; }
+    50%  { left: 100px; }
+    100% { left: 300px; }
+  }
+
+  2.duration - 소요되는 시간 지정
+  animation-duration: .5s;
+
+  3.animation-iteration-count - 재생 횟수
+
+  4. animation-direction - 종료 후 반복될 때 진행하는 방향
+  reverse - to => from
+  alternate - 홀수는 normal 짝수는 reverse
+  alternate-reverse - alternate의 반대
+
+  5. animation-play-state: running | pause  재생 또는 중지
