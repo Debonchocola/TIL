@@ -191,3 +191,11 @@ Transition 일정시간에 걸쳐서 변화를 일으키고 싶을 떄 사용
   alternate-reverse - alternate의 반대
 
   5. animation-play-state: running | pause  재생 또는 중지
+
+Transform
+  프로퍼티
+  1.translate 이동
+  2.scale 확대 축소
+  3.rotate 회전
+
+  2D는 요소가 x,y 3D는 x, y, z이다.
