@@ -199,3 +199,32 @@ Transform
   3.rotate 회전
 
   2D는 요소가 x,y 3D는 x, y, z이다.
+
+position: fixed 스크롤 되더라도 항상 같은 위치에 고정
+
+@media 미디어 별로 style 지정 => Media Query라 한다.
+
+@media screen and (min-width: 480px) {
+  body {
+    background-color: lightgreen;
+  }
+}
+
+@media only screen and (min-width : 320px) {
+
+}
+/* Extra Small Devices, Phones : 480px ~ */
+@media only screen and (min-width : 480px) {
+
+}
+/* Small Devices, Tablets : 768px ~ */
+@media only screen and (min-width : 768px) {
+
+}
+
+-webkit-user-select: none;
+
+Flexbox의 장점
+  1. 1줄 코드로 수평정렬 가능
+  2. 요소의 상하좌우 정렬, 순서 변경 간단.
+  3. 요소 간격 조절 간단
