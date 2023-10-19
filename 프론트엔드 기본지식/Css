@@ -228,3 +228,17 @@ Flexbox의 장점
   1. 1줄 코드로 수평정렬 가능
   2. 요소의 상하좌우 정렬, 순서 변경 간단.
   3. 요소 간격 조절 간단
+
+flex container 속성
+  1. flex-direction: row 수평 배치
+  2. flex-direction: column 수직 배치
+  3. flex-wrap: nowrap => 한 줄 배치 overflow: auto 를 통해 화면 밖으로 나가지 않고 scroll 생성
+  4. flex-wrap: wrap => 복수행 배치
+  5. align-items: stretch => item이 꽉찬 높이를 갖는다.
+
+flex item 속성
+  1.order item의 배치 순서를 지정한다.
+  2.flex-grow 너비 지정 ex) flex-grow이 1이고 하나만 3이면 너비가 3배
+  3.flex-shrink 축소인자 지정 1이 기본값인데 0을 주면 혼자만 줄지 않고 원래 너비 유지
+  4.flex grow, shrink basis 한번에 주기 기능
+  4.align-self 정렬 가능 auto | flex-start | flex-end | center | baseline | stretch
