@@ -43,3 +43,21 @@ undefined
 
   선언은 되었지만 값을 할당하지 않은 변수에 접근하거나 존재하지 않는 객체 프로퍼티에 접근할 경우 undefined가 반환된다
   값이 없을 때는 undefined 대신 null 사용할 것!
+
+null 
+  typeof 를 사용하면 object가 나온다. null 타입 확인은 ===를 사용해야 한다.
+
+symbol 
+  ES6에서 추가된 7번쨰 타입 이름의 충돌 위험이 없는 유일한 객체의 프로퍼티 키를 만들기 위해 사용
+
+  // 심볼 key는 이름의 충돌 위험이 없는 유일한 객체의 프로퍼티 키
+  var key = Symbol('key');
+  console.log(typeof key); // symbol
+  
+  var obj = {};
+  obj[key] = 'value';
+  console.log(obj[key]); // value
+
+객체타입
+  원시타입을 제외한 나머지 값은 객체이다.
+  변수 - 데이터가 저장된 메모리 상의 주소를 기억하여 참조한다.
