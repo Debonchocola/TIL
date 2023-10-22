@@ -60,4 +60,41 @@ symbol
 
 객체타입
   원시타입을 제외한 나머지 값은 객체이다.
+
   변수 - 데이터가 저장된 메모리 상의 주소를 기억하여 참조한다.
+        일정기간 사용할 값에 사용하기 때문에 의미있는 변수명이 필요하다.
+
+  호이스팅 - 모든 선언문이 해당 scope의 선두로 옮겨진 것처럼 동작 => 선언 이전에 참조 가능
+          실제로 변수 선언이 코드 레벨로 옮겨진 것은 아니고 변수 객체(Variable object)에 등록되고 undefined로 초기화된 것이다.
+
+  함수 레벨 스코프(Function-level scope)
+  함수 내에서 선언된 변수는 함수 내에서만 유효하며 함수 외부에서는 참조할 수 없다. 즉, 함수 내부에서 선언한 변수는 지역 변수이며 함수 외부에서 선언한 변수는 모두 전역 변수이다.
+  
+  블록 레벨 스코프(Block-level scope)
+  코드 블록 내에서 선언된 변수는 코드 블록 내에서만 유효하며 코드 블록 외부에서는 참조할 수 없다.
+
+  let const는 블록 레벨 var는 현재 잘 사용하지 않는다.
+  이유는 1.전역 변수 남발 2.의도치 않은 변수의 전역화 3. 중복선언 가능으로 의도치 않은 변수값 변경 4.호이스팅 문제
+
+  변수의 유효범위 (scope)는 좁을수록 좋다.
+
+  연산자
+  피연산자도 평가되어 하나의 값이 되므로 표현식이고 피연산자를 연산자와 결합한 연산자 표현식도 물론 표현식이다.
+
+    산술연산자 + - * / %
+    단항산술연산자 ++ -- +(아무효과 없음) -(양수 => 음수 음수 => 양수)
+    // 선대입 후증가 (Postfix increment operator)
+    result = x++;
+    console.log(result, x); // 5 6
+    
+    // 선증가 후대입 (Prefix increment operator)
+    result = ++x;
+    console.log(result, x); // 7 7
+    
+    // 선대입 후감소 (Postfix decrement operator)
+    result = x--;
+    console.log(result, x); // 7 6
+    
+    // 선감소 후대입 (Prefix decrement operator)
+    result = --x;
+    console.log(result, x); // 5 5
