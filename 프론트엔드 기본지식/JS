@@ -98,3 +98,40 @@ symbol
     // 선감소 후대입 (Prefix decrement operator)
     result = --x;
     console.log(result, x); // 5 5
+
+    x == y 값이 같음
+    x === y 값과 타입이 같음
+    x != y 값이 다름
+    x !== y 값과 타입이 다름
+
+
+    등등 비교(==) 연산자는 예측하기 어려운 결과를 만들어낸다.
+    != null의 경우 undefined의 경우와 null인 경우 모두를 위해 자주 사용하긴 한다.
+    
+    삼항연산자 (자주 사용) - 다른 표현식의 일부가 될 수 있기 떄문에
+    조건식 ? 조건식이 ture일때 반환할 값 : 조건식이 false일때 반환할 값 
+
+    || OR 
+    && AND
+    ! 부정
+
+    // 단축 평가
+    'Cat' && 'Dog' // “Dog”
+
+     선언하지 않은 식별자를 typeof 연산자로 연산해 보면 ReferenceError가 발생하지 않고 “undefined”를 반환한다.
+
+  switch문 
+    switch (month) {
+    case 1:
+      monthName = 'January';
+      break;
+    case 2:
+      monthName = 'February';
+      break;
+    case 3:
+      monthName = 'March';
+      break;
+    default:
+      monthName = 'Invalid month';
+    }
+    break을 넣지 않으면 해당하는 case여도 모든 조건을 돌고 default 값이 나온다.
