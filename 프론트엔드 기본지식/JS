@@ -154,3 +154,10 @@ symbol
       default:
         console.log('Invalid month');
     }
+
+
+  for문 이해
+  for (var i = 0; i < 2; i++) {
+    console.log(i);
+  }
+  i = 0 => true => 0 => i++ => true => 1 => i++ => false 
